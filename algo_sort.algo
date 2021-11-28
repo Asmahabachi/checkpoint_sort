@@ -1,0 +1,45 @@
+
+ALGORITHM algorithm_name
+VAR
+    x: INTEGER;
+    numbers : array[1..10] of Integer;
+BEGIN
+    Write('Insertion Example: ');
+
+    numbers[1] := 10;
+    numbers[2] := 22;
+    numbers[3] := 95;
+    numbers[4] := 756;
+    numbers[5] := 2;
+    numbers[6] := 10;
+    numbers[7] := 11;
+    numbers[8] := 3;
+    numbers[9] := 1;
+    numbers[10] := 257;
+
+   for x:= 0 to 10 do
+      writeln('unsorted[', x, '] = ', numbers[x] );
+
+   InsertionSort(10);
+
+   for x:= 0 to 10 do
+      writeln('sorted[', x, '] = ', numbers[x] );
+
+END
+
+PROCEDURE InsertionSort(size : Integer )
+VAR 
+i, j, index : Integer;
+BEGIN
+    FOR i FROM 2 TO size DO
+        index := numbers[i];
+        j := i;
+        WHILE ((j > 1) AND (numbers[j-1] > index)) DO
+                numbers[j] := numbers[j-1];
+            j := j - 1;
+        END_WHILE 
+        numbers[j] := index;
+    END_FOR
+END;
+
+
